@@ -5,7 +5,7 @@ Implemented Artificial Intelligent Speaker.
 ## Used API
 Speech to Text : [Google Streaming Speech Recognition API](https://cloud.google.com/speech/docs/streaming-recognize) \
 Conversaion : [Watson](https://console.bluemix.net/docs/services/conversation/getting-started.html#gettingstarted), [Aibril(korean)](https://www.aibril.com/doc/Conversation/010.html)\
-Text to Speech : [gTTS](https://pypi.python.org/pypi/gTTS), [Naver Clova TTS](https://developers.naver.com/products/clova/tts/), [AWS Polly TTS](https://github.com/yonghankim/aws-polly)
+Text to Speech : [gTTS](https://pypi.python.org/pypi/gTTS), [Naver Clova TTS](https://developers.naver.com/products/clova/tts/), [AWS Polly TTS](https://aws.amazon.com/ko/polly/)
 
 
 ## Requirements
