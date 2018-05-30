@@ -7,14 +7,14 @@ import os
 
 class TextToSpeech:
     def __init__(self):
-        self.output_gtts = "output_gtts.mp3"    # google tts
-        self.output_ntts = "output_ntts.mp3"    # naver-clova tts
-        self.output_atts = "output_atts.mp3"    # aws-polly tts
+        self.output_gtts = "output_gtts.mp3"    # gTTS
+        self.output_ntts = "output_ntts.mp3"    # Naver-Clova
+        self.output_atts = "output_atts.mp3"    # AWS-Polly
 
     def google_tts(self, text):
         language = 'ko'
         rec_tts = gTTS(text=text, lang=language, slow=False)
-        print("Saving GOOGLE TTS mp3")
+        print("Saving gTTS mp3")
         rec_tts.save(self.output_gtts)
 
         return self.output_gtts
@@ -33,7 +33,7 @@ class TextToSpeech:
         rescode = response.getcode()
 
         if (rescode == 200):
-            print("Saving Naver TTS mp3")
+            print("Saving Naver-Clova TTS mp3")
             response_body = response.read()
             with open(self.output_ntts, 'wb') as f:
                 f.write(response_body)
@@ -55,5 +55,6 @@ class TextToSpeech:
         with open(self.output_atts, 'wb') as f:
             data = stream.read()
             f.write(data)
+        print("Saving AWS-Polly TTS mp3")
 
         return self.output_atts
