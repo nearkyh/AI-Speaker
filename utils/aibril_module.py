@@ -1,9 +1,11 @@
 # -*- coding:utf-8 -*-
 
-from watson_developer_cloud import conversation_v1
-import json
-import sys
 import os
+import sys
+import json
+
+from watson_developer_cloud import conversation_v1
+
 
 class WatsonServer:
     def __init__(self):

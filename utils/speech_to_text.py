@@ -2,6 +2,7 @@
 
 import speech_recognition as sr
 
+
 class SpeechToText:
     def __init__(self):
         self.result_audio_stt = ""

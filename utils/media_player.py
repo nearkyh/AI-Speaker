@@ -1,6 +1,7 @@
 import os
 import random
 
+
 def media_player(text):
     media_dir = './media'
     classical_music_dir = '/classical_music'

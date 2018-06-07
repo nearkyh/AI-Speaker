@@ -1,9 +1,11 @@
 # -*- coding:utf-8 -*-
 
+import os
+import urllib.request
+
 from gtts import gTTS
 from boto3 import client
-import urllib.request
-import os
+
 
 class TextToSpeech:
     def __init__(self):

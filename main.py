@@ -1,12 +1,13 @@
 # -*- coding:utf-8 -*-
 
+import os
+
 from utils import aibril_module
-# from utils import transcribe_streaming_mic
+from utils import transcribe_streaming_mic
 from utils import speech_to_text
 from utils import text_to_speech
 from utils import audio_converter
 from utils import media_player
-import os
 
 
 if __name__ == '__main__':
@@ -15,18 +16,18 @@ if __name__ == '__main__':
     tts_conn = text_to_speech.TextToSpeech()
 
     while True:
-        # transcript = transcribe_streaming_mic.stt_streaming_mic()
-        transcript = stt_conn.mic_stt()
+        transcript = transcribe_streaming_mic.stt_streaming_mic()
+        # transcript = stt_conn.mic_stt()
 
         answer = aibril_conn.aibril_conv(transcript)
 
-        output_gtts = tts_conn.google_tts(answer)
+        # output_gtts = tts_conn.google_tts(answer)
         # output_ntts = tts_conn.naver_tts(answer)
-        # output_atts = tts_conn.aws_tts(answer)
+        output_atts = tts_conn.aws_tts(answer)
 
-        convert_audio = audio_converter.convert(output_gtts)
+        # convert_audio = audio_converter.convert(output_gtts)
         # convert_audio = audio_converter.convert(output_ntts)
-        # convert_audio = audio_converter.convert(output_atts)
+        convert_audio = audio_converter.convert(output_atts)
 
         os.system('aplay ' + convert_audio)
 
