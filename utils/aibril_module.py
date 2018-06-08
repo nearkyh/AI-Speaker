@@ -111,7 +111,7 @@ class WatsonServer:
             #   Check the gugudan-game is in the context
             # ==================================================
 
-            print("Moppy>>", result_conv)
+            print("Aibril>>", result_conv)
 
         except Exception as e:
             # self.logger.write_critical(e)

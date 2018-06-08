@@ -1,5 +1,4 @@
 #!/usr/bin/env python
-# -*- coding:utf-8 -*-
 
 # Copyright 2017 Google Inc. All Rights Reserved.
 #
@@ -16,12 +15,9 @@
 # limitations under the License.
 
 """Google Cloud Speech API sample application using the streaming API.
-
 NOTE: This module requires the additional dependency `pyaudio`. To install
 using pip:
-
     pip install pyaudio
-
 Example usage:
     python transcribe_streaming_mic.py
 """
@@ -29,6 +25,7 @@ Example usage:
 # [START import_libraries]
 from __future__ import division
 
+import os
 import re
 import sys
 
@@ -38,10 +35,9 @@ from google.cloud.speech import types
 import pyaudio
 from six.moves import queue
 
-import json
-import os
-
-# from utils import aibril_conv_module
+from utils import aibril_module
+from utils import text_to_speech
+from utils import audio_converter
 # [END import_libraries]
 
 # Audio recording parameters
@@ -116,17 +112,12 @@ class MicrophoneStream(object):
 
 
 def listen_print_loop(responses):
-    # watson = aibril_conv_module.WatsonServer()
-
     """Iterates through server responses and prints them.
-
     The responses passed is a generator that will block until a response
     is provided by the server.
-
     Each response may contain multiple results, and each result may contain
     multiple alternatives; for details, see https://goo.gl/tjCPAU.  Here we
     print only the transcription for the top alternative of the top result.
-
     In this case, responses are provided for interim results as well. If the
     response is an interim one, print a line feed at the end of it, to allow
     the next result to overwrite it, until the response is a final one. For the
@@ -161,8 +152,7 @@ def listen_print_loop(responses):
             num_chars_printed = len(transcript)
 
         else:
-            print("USER>>", transcript + overwrite_chars)
-            # watson.aibril_conv(transcript)
+            print("User>>", transcript + overwrite_chars)
 
             # Exit recognition if any of the transcribed phrases could be
             # one of our keywords.
@@ -172,10 +162,14 @@ def listen_print_loop(responses):
 
             num_chars_printed = 0
 
-            return transcript
+            answer = aibril_conn.aibril_conv(transcript)
+            output_atts = tts_conn.aws_tts(answer)
+            convert_audio = audio_converter.convert(output_atts)
+            os.system('aplay ' + convert_audio)
+            print("Say something...")
 
 
-def stt_streaming_mic():
+def main():
     # See http://g.co/cloud/speech/docs/languages
     # for a list of supported languages.
     language_code = 'ko-KR'  # a BCP-47 language tag
@@ -197,10 +191,11 @@ def stt_streaming_mic():
         responses = client.streaming_recognize(streaming_config, requests)
 
         # Now, put the transcription responses to use.
-        transcript = listen_print_loop(responses)
+        print("Say something...")
+        listen_print_loop(responses)
 
-        return transcript
 
-
-# if __name__ == '__main__':
-#     stt_streaming_mic()
+if __name__ == '__main__':
+    aibril_conn = aibril_module.WatsonServer()
+    tts_conn = text_to_speech.TextToSpeech()
+    main()

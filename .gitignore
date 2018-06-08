@@ -4,3 +4,9 @@ env/
 \.idea/
 
 utils/__pycache__/
+
+recording_file\.wav
+
+output_atts\.mp3
+
+convert_audio\.wav
