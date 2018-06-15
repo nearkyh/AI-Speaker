@@ -53,3 +53,6 @@ Creating virtualenv
 
 Run
 - `python main.py`
+<div align='center'>
+  <img src='/img/FlowChart.JPG'>
+</div>
