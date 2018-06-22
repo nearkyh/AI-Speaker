@@ -3,7 +3,7 @@ Implemented Artificial Intelligent Speaker.
 
 
 ## Used API
-Speech to Text : [Google Streaming Speech Recognition API](https://cloud.google.com/speech/docs/streaming-recognize) \
+Speech to Text : [Google Streaming Speech Recognition API](https://cloud.google.com/speech/docs/streaming-recognize), [Google Speech Recognition](https://pypi.org/project/SpeechRecognition/) \
 Conversaion : [Watson](https://console.bluemix.net/docs/services/conversation/getting-started.html#gettingstarted), [Aibril(korean)](https://www.aibril.com/doc/Conversation/010.html)\
 Text to Speech : [gTTS](https://pypi.python.org/pypi/gTTS), [Naver Clova TTS](https://developers.naver.com/products/clova/tts/), [AWS Polly TTS](https://aws.amazon.com/ko/polly/)
 
@@ -14,7 +14,7 @@ Text to Speech : [gTTS](https://pypi.python.org/pypi/gTTS), [Naver Clova TTS](ht
 
 
 ## Dependencies
-- `sudo apt-get install python3-dev`
+- `sudo apt-get install python3-dev virtualenv`
 - `sudo apt-get install portaudio19-dev`
 - `sudo apt-get install ffmpeg`
 
