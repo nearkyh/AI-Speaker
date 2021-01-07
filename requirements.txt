@@ -2,7 +2,7 @@ gTTS==1.2.2
 SpeechRecognition==3.8.1
 watson-developer-cloud==0.26.1
 xmltodict==0.11.0
-lxml==4.0.0
+lxml==4.6.2
 bs4==0.0.1
 requests==2.20.0
 urllib3==1.24.2
